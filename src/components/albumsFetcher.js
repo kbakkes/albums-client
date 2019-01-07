@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import React, { Component } from 'react';
-
+import AlbumComponent from './albumComponent';
 
 class AlbumsFether extends Component {
 
@@ -27,8 +27,7 @@ class AlbumsFether extends Component {
 
     returnAlbums(albumList){
         return  _.map(albumList, function (album) {
-            console.log(album.name);
-            return album.name
+            return (<AlbumComponent key={album.name} album={album} />)
         });
 
     }
@@ -43,7 +42,6 @@ class AlbumsFether extends Component {
             return (
                 <div>
                     {this.returnAlbums(this.state.albums)}
-
                 </div>
             );
         }
