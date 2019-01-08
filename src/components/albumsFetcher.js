@@ -2,7 +2,7 @@ import _ from 'underscore';
 import React, { Component } from 'react';
 import AlbumComponent from './albumComponent';
 
-class AlbumsFether extends Component {
+class AlbumsFetcher extends Component {
 
     constructor(props){
         super();
@@ -13,6 +13,7 @@ class AlbumsFether extends Component {
     }
 
     componentWillMount(){
+        console.log('test');
         fetch('http://127.0.0.1:8000/api/albums')
         // fetch('https://swapi.co/api/people/69/')
             .then(res => res.json())
@@ -49,5 +50,5 @@ class AlbumsFether extends Component {
     }
 }
 
-export default AlbumsFether;
+export default AlbumsFetcher;
 

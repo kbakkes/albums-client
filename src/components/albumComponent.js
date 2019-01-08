@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import AlbumDetailComponent from "./AlbumDetailComponent";
+import { Link } from 'react-router-dom';
+
 
 
 class AlbumComponent extends Component {
@@ -21,17 +27,32 @@ class AlbumComponent extends Component {
 
 
     render() {
-        console.log(this.state);
         if(this.state.isLoading === true){
             return (<div><h1>loading....</h1></div>)
         }
         else{
             let album = this.state.album;
             return (
-                <div>
-                    <h1>{album.name}</h1>
-                    <h3>{album.artist}</h3>
-                </div>
+                <Paper style={{
+                    padding: '10px',
+                    width: '25%',
+                    margin: '20px',
+                    marginLeft: '37%'
+                }}>
+                    <Typography variant="h5" component="h3">
+                        {album.name} ({album.year})
+                    </Typography>
+                    <Typography component="p">
+                        {album.artist}
+                    </Typography>
+
+
+
+
+                    <Button
+                        style={{margin: '10px'}} variant="outlined" size="small" color="secondary" >
+                        <Link style={{textDecoration: 'none',  }} to="/edit/">Edit</Link></Button>
+                </Paper>
             );
         }
 
