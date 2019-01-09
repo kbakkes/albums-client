@@ -28,9 +28,9 @@ const AppRouter = () => (
 
             <Route path="/" exact component={Index} />
             <Route path="/albums/" component={AlbumFetcher} />
-            <Route path="/albums/:name/" component={AlbumFetcher} />
+            <Route name="detail" path="/album/:album/" component={AlbumDetailComponent} />
+            <Route name="edit" path="/edit/:album/" component={EditAlbumComponent} />
 
-            <Route path="/edit/" component={EditAlbumComponent} />
 
         </div>
     </Router>

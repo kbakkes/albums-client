@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import AlbumDetailComponent from "./AlbumDetailComponent";
 import { Link } from 'react-router-dom';
 
 
@@ -20,7 +19,9 @@ class AlbumComponent extends Component {
         this.setState({
             isLoading: false,
             album: this.props.album
-        })
+        });
+
+
     }
 
 
@@ -32,6 +33,11 @@ class AlbumComponent extends Component {
         }
         else{
             let album = this.state.album;
+
+            let newLink = {
+                pathname: ("/album/"+album._id),
+                album: album
+            };
             return (
                 <Paper style={{
                     padding: '10px',
@@ -49,9 +55,11 @@ class AlbumComponent extends Component {
 
 
 
+
                     <Button
                         style={{margin: '10px'}} variant="outlined" size="small" color="secondary" >
-                        <Link style={{textDecoration: 'none',  }} to="/edit/">Edit</Link></Button>
+                        <Link style={{textDecoration: 'none',  }}  to={newLink} >See More</Link></Button>
+
                 </Paper>
             );
         }
