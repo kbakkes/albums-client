@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import axios from "axios/index";
 
 
 class AlbumDetailComponent extends Component {
@@ -14,10 +15,17 @@ class AlbumDetailComponent extends Component {
     }
 
     componentWillMount() {
-        this.setState({
-            isLoading: false,
-            album: this.props.location.album
-        })
+        let albumId = this.props.match.params.album;
+
+        axios.get('http://127.0.0.1:8000/api/albums/'+ albumId)
+            .then(res => {
+                console.log(res);
+                let album = res.data;
+                this.setState({
+                    isLoading: false,
+                    album: album
+                });
+            });
     }
 
 
@@ -28,7 +36,7 @@ class AlbumDetailComponent extends Component {
         else{
 
             let album = this.state.album;
-
+            console.log(album);
             let newLink = {
                 pathname: ("/edit/"+album._id),
                 album: album
