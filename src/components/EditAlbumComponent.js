@@ -5,8 +5,12 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
-
-
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Redirect } from 'react-router'
 
 
 class EditAlbumComponent extends Component {
@@ -14,22 +18,31 @@ class EditAlbumComponent extends Component {
         super();
         this.state = {
             isLoading: true,
+            open: false,
+            ready: false,
             album: {},
             name: '',
             artist: '',
             year: '',
             genre: ''
         };
-
+        this.handleDelete = this.handleDelete.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
+
     handleSubmit = event => {
         let albumId = this.props.match.params.album;
-
         event.preventDefault();
-
             const newAlbum = {
                 name: this.state.name,
                 artist: this.state.artist,
@@ -44,6 +57,22 @@ class EditAlbumComponent extends Component {
                 })
     };
 
+    handleDelete(){
+        let albumId = this.props.match.params.album;
+
+        axios.delete('http://127.0.0.1:8000/api/albums/' + albumId)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+                this.setState({
+                    ready: true,
+                    open: false,
+                });
+            })
+
+    }
+
+
     componentWillMount() {
         let albumId = this.props.match.params.album;
         axios.get('http://127.0.0.1:8000/api/albums/'+ albumId)
@@ -55,12 +84,11 @@ class EditAlbumComponent extends Component {
                     name: album.name,
                     artist: album.artist,
                     year: album.year,
-                    genre: album.genre
+                    genre: album.genre,
 
                 });
             });
     }
-
 
     handleChange = event => {
         const name = event.target.name;
@@ -81,13 +109,40 @@ class EditAlbumComponent extends Component {
 
 
     render() {
-        if(this.state.isLoading === true){
+        if(this.state.isLoading === true) {
             return (<div><h1>loading....</h1></div>)
+        }
+        else if(this.state.ready === true){
+            return(
+                <Redirect to="/albums/" />
+            )
         }
         else{
             let album = this.state.album;
 
             return (
+                <div>
+                    <Dialog
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                        aria-labelledby="alert-dialog-title"
+                        aria-describedby="alert-dialog-description"
+                    >
+                        <DialogTitle id="alert-dialog-title">{"Delete "+ album.name}</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                Are you sure you want to delete {album.name}? After this action there is no way back.
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.handleClose} color="primary">
+                                Cancel
+                            </Button>
+                            <Button onClick={this.handleDelete} color="primary" autoFocus>
+                                Delete
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
                 <Paper style={{
                     padding: '10px',
                     width: '25%',
@@ -135,17 +190,18 @@ class EditAlbumComponent extends Component {
                             name="genre"
                         />
                         <br></br>
+                        <Button variant="outlined" color="secondary" onClick={this.handleClickOpen}>
+                            Delete
+                        </Button>
                         <Button style={{margin: '10px'}}
                                 variant="outlined"
-                                size="small"
                                 color="secondary"
                                 type='submit'>
                             Save
                     </Button>
                     </form>
-
-
                 </Paper>
+                </div>
             );
         }
     }

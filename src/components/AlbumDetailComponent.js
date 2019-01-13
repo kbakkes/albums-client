@@ -34,7 +34,6 @@ class AlbumDetailComponent extends Component {
             return (<div><h1>loading....</h1></div>)
         }
         else{
-
             let album = this.state.album;
             console.log(album);
             let newLink = {
