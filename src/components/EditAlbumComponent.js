@@ -19,7 +19,8 @@ class EditAlbumComponent extends Component {
         this.state = {
             isLoading: true,
             open: false,
-            ready: false,
+            edit: false,
+            remove: false,
             album: {},
             name: '',
             artist: '',
@@ -54,6 +55,9 @@ class EditAlbumComponent extends Component {
                 .then(res => {
                     console.log(res);
                     console.log(res.data);
+                    this.setState({
+                        edit: true,
+                    });
                 })
     };
 
@@ -65,7 +69,7 @@ class EditAlbumComponent extends Component {
                 console.log(res);
                 console.log(res.data);
                 this.setState({
-                    ready: true,
+                    del: true,
                     open: false,
                 });
             })
@@ -109,10 +113,17 @@ class EditAlbumComponent extends Component {
 
 
     render() {
+
         if(this.state.isLoading === true) {
             return (<div><h1>loading....</h1></div>)
         }
-        else if(this.state.ready === true){
+        else if(this.state.edit === true){
+            let url = ("/albums/"+ this.props.match.params.album);
+            return(
+                <Redirect to={url} />
+            )
+        }
+        else if(this.state.del === true){
             return(
                 <Redirect to="/albums/" />
             )

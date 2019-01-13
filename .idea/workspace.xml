@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="496dd8aa-0519-4be1-86ea-ccac24b23147" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/CreateAlbumComponent.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/AlbumDetailComponent.js" afterPath="$PROJECT_DIR$/src/components/AlbumDetailComponent.js" />
       <change beforePath="$PROJECT_DIR$/src/components/EditAlbumComponent.js" afterPath="$PROJECT_DIR$/src/components/EditAlbumComponent.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -48,8 +43,8 @@
       <file leaf-file-name="EditAlbumComponent.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/EditAlbumComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="159">
+              <caret line="121" column="19" lean-forward="true" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -189,12 +184,12 @@
       <option name="presentableId" value="Default" />
       <updated>1546022585017</updated>
       <workItem from="1546022587470" duration="37813000" />
-      <workItem from="1547388516681" duration="13041000" />
+      <workItem from="1547388516681" duration="13913000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50854000" />
+    <option name="totallyTimeSpent" value="51726000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -403,8 +398,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/EditAlbumComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+        <state relative-caret-position="159">
+          <caret line="121" column="19" lean-forward="true" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
